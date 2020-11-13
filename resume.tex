@@ -1,12 +1,27 @@
-\documentclass{article}
+\documentclass[11pt]{article}
 
 \usepackage{titlesec}
 \usepackage{titling}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1in,headheight=0pt,headsep=0pt]{geometry}
 \usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{titlesec}
 
+
+\definecolor{mycolor}{rgb}{0.122, 0.435, 0.698}% Rule colour
+
+% Reduce the margin from the top of the page
+\setlength{\voffset}{-0.5in}
+\setlength{\headsep}{5pt}
+
+
+% Format some parts
 \titleformat{\section}
-{\huge\bfseries\lowercase}
+{\Large\bfseries\uppercase}
 {}
 {0em}
 {}[\titlerule]
@@ -23,122 +38,241 @@
 {0em}
 {}
 
-\renewcommand{\maketitle}{
-        \begin{center}
-        {\huge\bfseries
-        \theauthor}
-        
-        \vspace{.25em}
-        
-        \end{center}
+\newtcbox{\topic}{on line,
+colframe=mycolor,
+colback=mycolor!10!white,
+boxrule=0.5pt,
+arc=4pt,
+boxsep=0pt,
+left=6pt,
+right=6pt,
+top=6pt,
+bottom=6pt}
+
+\newtcbox{\nameTitleBox}{on line,
+colframe=gray,
+colback=white,
+boxrule=1pt,
+arc=2pt,
+boxsep=0pt,
+left=6pt,
+right=6pt,
+top=6pt,
+bottom=6pt}
+
+% define function
+% arguments: level, place, graduation, image
+\newcommand{\eduWithDetail}[5] {
+    \begin{table}[h!]
+        \begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
+            \textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
+            #3 &  & \\
+            \multicolumn{3}{l}{
+                % \makecell{#5}
+                #5
+            }
+        \end{tabular*}
+    \end{table}
+    }
+
+\newcommand{\eduSmall}[4] {
+    \begin{table}[h!]
+        \begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
+            \textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
+            #3 &  &
+        \end{tabular*}
+    \end{table}
+    }
+
+\newcommand{\multilineCell}[1]{
+    \begin{tabular}[c]{@{}l@{}} #1 \end{tabular}
 }
+
+
 
 \begin{document}
 
-\title{R\'esum\'e}
-\author{Farbod Shahinfar}
+% Title and Header section
+{
+    % Image
+    % \begin{minipage}[t]{0.3\textwidth}
+    %     % add a row so that contacts minipage is alligned with
+    %     % this line, but remove the space added for the line
+    %     \strut\vspace*{-\baselineskip}\newline
+    %     \includegraphics[width=80px]{images/farbod.png} \\
+    % \end{minipage}
+    % Name
+    % \nameTitleBox{
+    \begin{minipage}[t]{3.5cm}
+        \vspace{8mm}
+        \noindent
+        \huge\bfseries
+        Farbod\\
+        Shahinfar
+        \vspace{0.0cm}
+    \end{minipage}
+    % }
+    \null\hfill
+    \begin{minipage}[t]{0.5\textwidth}
+        \input{./subsections/contacts.tex}
+    \end{minipage}
 
-\begin{center}
-        {
-                \huge\bfseries
-                Farbod Shahinfar
-        }
-\end{center}
+}
 
-\section{Contacts}
-\begin{multicols}{2}
-\begin{itemize}
-        \item{\textbf{Phone:} +98 912 807 7698}
-        \item{\textbf{Email:} farbod\_shahinfar@comp.iust.ac.ir}
-        \item{\textbf{Telegram:} @fshahinfar1}
-        \item{\textbf{Linkedin:} www.linkedin.com/in/farbod-shahinfar}
-        \item{\textbf{Github:} www.github.com/fshahinfar1}
-\end{itemize}
-\end{multicols}
 
-\section{Summary}
-Junior student of computer engineering at Iran University of Science and Technology. Highest ranking student for two consecutive years. Has more than one year of experience in developing video games. Cares about system architecture and software design patterns. Eager to learn new concepts and able to learn new technologies quickly. He uses his knowledge and experience for solving problems in his way.
+
+% \section{Summary}
+% Junior student of computer engineering at Iran University of Science and Technology.
+% Highest ranking student for two consecutive years.
+% Has more than one year of experience in developing video games.
+% Is intrested in artificial intelligence subjects and currently is learning the
+% basic concepts in the area.
+% Cares about system architecture and software design patterns.
+% Eager to learn new concepts and able to learn new technologies quickly.
+% He uses his knowledge and experience for solving problems in his way.
+%
+
+\noindent\textbf{Research Interests:} \\
+\indent Computer Systems Performance, Distributed Systems, Operating Systems
+
 
 \section{Education}
-\begin{multicols}{2}
-\noindent \textbf{BSc. Computer Engineering} \par
-Iran University of Science and Technology \par
-Tehran, Tehran Province \par
-Graduating September 2020 \par
-\par
-\end{multicols}
+\eduSmall{MSc. Computer Software Engineering}{Sharif University of Technology}{Graduating September 2022}{images/sharif.png}
+\vspace{-5mm}
+
+\eduWithDetail{BSc. Computer Engineering}{Iran University of Science and Technology}{Graduated September 2020}{images/iust.png}{
+    \multilineCell{
+        \hspace{5mm} \textbf{Frist Rank}, 18.62 GPA \\
+        \hspace{5mm} \textbf{Project}:
+        Study of MMU Cache Partitioning Efficacy for Hierarchical Page Tables \\
+        \hspace{5mm} in OS Memory Management \\
+        \hspace{5mm} \textbf{Supervisor}: Dr. Mohsen Sharifi
+    }
+}
+\vspace{-5mm}
+
+\eduSmall{High School Diploma}{Salam 3}{Graduated May 2015}{images/salam.png}
 
 
-\begin{multicols}{2}
-\noindent \textbf{High School Diploma} \par
-Salam 3 \par
-Tehran, Tehran Province \par
-Graduated May 2015 \par
-\par
-\end{multicols}
+% \section {Work Experience}
+% % \noindent \textbf{Smart Online Monitoring Co} \par
+% % Application Developer \par
+% % January 2020 – Peresent \par
+% % \begin{itemize}
+% %     \item Developer of Kidak android application
+% %     \item Develop android application with React Native framework
+% %     \item Experience developing a BLE (bluetooth low energy) application
+% % \end{itemize}
+% % \topic{React Native}
+% % \topic{Javascript}
+% % \topic{BLE}
+% % \vspace{15pt}
+% 
+% \noindent \textbf{Cognia} (DigikalaNEXT Summer Camp) \par
+% Backend Developer \par
+% July 2019 – March 2020 \par
+% \begin{itemize}
+%     \item Develop data gathering and data processing service
+%     \item Deploy service with containerization
+% \end{itemize}
+% \topic{Python}
+% \topic{Flask}
+% \topic{PostgreSQL}
+% \topic{MongoDB}
+% \topic{Redis}
+% \topic{Docker \& Docker Compose}
+% \topic{Locust}
+% \vspace{15pt}
+% 
+% \pagebreak
+% 
+% \noindent \textbf{Loop Game Studio} \par
+% Backend Developer (A project contract) \par
+% June 2019 – August 2019 \par
+% \begin{itemize}
+%     \item Develop a REST API server for the game.
+%     \item Design a relational database for cutsomizable items in sale.
+% \end{itemize}
+% \topic{Python - Flask}
+% \topic{PostgreSQL}
+% \topic{Docker \& Docker Compose}
+% \vspace{15pt}
+% 
+% \noindent \textbf{ElmoGame} \par
+% Game developer \par
+% July 2017 – January 2019 \par
+% \begin{itemize}
+%     \item Part of the technical team for \emph{Footyard} online game
+%     \item Work with Unity3d engine
+%     \item Apply software design patterns in the project
+%     \item Communicate with game server using REST APIs
+% \end{itemize}
+% \topic{Unity3D}
+% \topic{C\#}
+% \vspace{15pt}
 
-
-\section {Employment}
-\noindent \textbf{ElmoGame} \par
-Game developer \par
-July 2017 – Present \par
-\begin{itemize}
-        \item Currently working on the core mechanics of a story telling game
-        \item Worked as a client developer of an online multiplayer game called "Footyard"
-        \item Communicate with game server using REST APIss
-        \item Acquire experience in design patterns
-\end{itemize}
-
-\pagebreak
-
+\section{Teacher Assitant}
+% IUST
 \noindent \textbf{Iran University of Science and Technology} \par
-Course Assistant \par
-September 2017 – Present \par
+September 2017 – Nov 2020
+{
+    \renewcommand\labelitemi{}
 \begin{itemize}
-        \item Collaborate in order to create the best learning experience for students
-        \item Course assistant of "Introduction to programming in python"
-        \item Course assistant of "Introduction to programming in Java"
-        \item Course assistant of "Database design"
+    \item {\textbf{Operating Systems}  \null\hfill Fall-2020 \\ Dr. Mohsen Sharifi}
+    \item {\textbf{Database design} \null\hfill Spring-2019 \\ Dr. Eisa Zarepour }
+    \item {\textbf{Introduction to programming in Java} \null\hfill Spring-2019 \\
+        Dr. Mohammad Taher Pilevar}
+    \item {\textbf{Introduction to programming in python} \null\hfill Fall-2017 and Spring-2018 \\
+ Dr. Adel Rahmani }
 \end{itemize}
+}
 
-\section{Technical skills}
-\subsection{Programming Languages}
-\begin{multicols}{2}
+% Khatam
+{
+\renewcommand\labelitemi{}
+\noindent \textbf{Khatam University} \par
+July 2019 - September 2019
 \begin{itemize}
-        \item \emph{Python:} Advanced
-        \item \emph{C\#:} Advanced
-        \item \emph{Java:} Intermediate
-        \item \emph{Javascript:} Intermediate
-        \item \emph{C:} Intermediate
-        \item \emph{SQL:} Intermediate
-        \item \emph{x86 Assembly:} Intermediate
-        \item \emph{AVR Assembly:} Intermediate
+    \item {\textbf{Python Programming Crash Course}  \null\hfill Summer-2019 \\
+        Dr. Mohammad Taher Pilevar}
 \end{itemize}
-\end{multicols}
+}
 
-\subsection{Frameworks}
-\begin{itemize}
-        \item \emph{React Native:} Intermediate
-        \item \emph{Django:} Intermediate
-\end{itemize}
 
-\subsection{Softwares}
-\begin{itemize}
-        \item \emph{Unity3d:} Advanced
-        \item \emph{Git:} Advanced
-        \item \emph{Matlab/Octave:} Intermediate
-\end{itemize}
+\section{Skills}
+\textbf{Programming Languages:}
+    \emph{Python},
+    \emph{C/C++},
+    \emph{Javascript},
+    \emph{C\#},
+    \emph{Java},
+    \emph{SQL}
 
-\subsection{Others}
-\begin{itemize}
-        \item \emph{Scrum:} Intermediate
-        \item \emph{Design patterns:} Intermediate
-\end{itemize}
+\textbf{Frameworks:}
+    \emph{React Native},
+    \emph{Flask},
+    \emph{Numpy and Matplotlib}
 
-\section{Languages}
-\begin{itemize}
-        \item \emph{Persian:} Native
-        \item \emph{English:} Proficient
-\end{itemize}
+\textbf{Softwares:}
+    \emph{Unity3d},
+    \emph{Git},
+    \emph{Vim},
+    \emph{PostgreSQL},
+    \emph{MongoDB},
+    \emph{Redis},
+    \emph{Docker},
+    \LaTeX,
+
+% \section{Projects}
+% \begin{multicols}{2}
+% \begin{itemize}
+%         \item { \emph{Footyard:} An online multi-player game developed for
+%                 android devices.}
+% \end{itemize}
+% \end{multicols}
+
+\textbf{Languages:}
+    \emph{Persian}: Native \\
+    \emph{English}: Working Profeciency
 
 \end{document}
