@@ -67,13 +67,10 @@ bottom=6pt}
         \begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
             \textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
             #3 &  & \\
-            \multicolumn{3}{l}{
-                % \makecell{#5}
-                #5
-            }
+            \multicolumn{3}{l}{#5}
         \end{tabular*}
     \end{table}
-    }
+}
 
 \newcommand{\eduSmall}[4] {
     \begin{table}[h!]
@@ -95,12 +92,12 @@ bottom=6pt}
 % Title and Header section
 {
     % Image
-    % \begin{minipage}[t]{0.3\textwidth}
-    %     % add a row so that contacts minipage is alligned with
-    %     % this line, but remove the space added for the line
-    %     \strut\vspace*{-\baselineskip}\newline
-    %     \includegraphics[width=80px]{images/farbod.png} \\
-    % \end{minipage}
+    \begin{minipage}[t]{100px}
+        % add a row so that contacts minipage is alligned with
+        % this line, but remove the space added for the line
+        \strut\vspace*{-\baselineskip}\newline
+        \includegraphics[width=80px]{images/farbod.png} \\
+    \end{minipage}
     % Name
     % \nameTitleBox{
     \begin{minipage}[t]{3.5cm}
@@ -109,52 +106,140 @@ bottom=6pt}
         \huge\bfseries
         Farbod\\
         Shahinfar
-        \vspace{0.0cm}
+        % \vspace{0.0cm}
     \end{minipage}
     % }
-    \null\hfill
-    \begin{minipage}[t]{0.5\textwidth}
+    \hfill\null
+    \begin{minipage}[t]{6cm}
+        \vspace{6mm}
         \input{./subsections/contacts.tex}
     \end{minipage}
-
 }
+\vspace{-1cm}
 
 
 
-% \section{Summary}
-% Junior student of computer engineering at Iran University of Science and Technology.
-% Highest ranking student for two consecutive years.
-% Has more than one year of experience in developing video games.
-% Is intrested in artificial intelligence subjects and currently is learning the
-% basic concepts in the area.
-% Cares about system architecture and software design patterns.
-% Eager to learn new concepts and able to learn new technologies quickly.
-% He uses his knowledge and experience for solving problems in his way.
-%
+\section{}
+Studying Master of Sc. in computer engineering at Sharif university of technology.
 
+\vspace{0.5cm}
 \noindent\textbf{Research Interests:} \\
-\indent Data Centers \& Cloud Computing, Computer Systems Performance,
-
-Distributed Systems, Operating Systems, Computer Systems
+\indent  Performance of Programable Networks and Computer Systems
 
 
 \section{Education}
-\eduSmall{MSc. Computer Software Engineering}{Sharif University of Technology}{Graduating September 2022}{images/sharif.png}
+
+\eduWithDetail{MSc. Computer Software Engineering}{Sharif University of Technology}{Graduating September 2022}{images/sharif.png}{
+    \multilineCell {
+        \hspace{5mm} \textbf{Project}:
+        Optimizing Load Balancing for Serverless Computing Platforms \\
+        \hspace{10mm} using Modeling Approaches \\
+        \hspace{5mm} \textbf{Supervisor}: Dr. Ali Movaghar
+    }
+}
 \vspace{-5mm}
 
 \eduWithDetail{BSc. Computer Engineering}{Iran University of Science and Technology}{Graduated September 2020}{images/iust.png}{
     \multilineCell{
-        \hspace{5mm} \textbf{Frist Rank}, 18.62 GPA \\
+        \hspace{5mm} \textbf{Frist Rank}, 18.62/20 GPA \\
         \hspace{5mm} \textbf{Project}:
         Study of MMU Cache Partitioning Efficacy for Hierarchical Page Tables \\
-        \hspace{5mm} in OS Memory Management \\
+        \hspace{10mm} in OS Memory Management \\
         \hspace{5mm} \textbf{Supervisor}: Dr. Mohsen Sharifi
     }
 }
 \vspace{-5mm}
 
-\eduSmall{High School Diploma}{Salam 3}{Graduated May 2015}{images/salam.png}
+% \eduSmall{High School Diploma}{Salam 3}{Graduated May 2015}{images/salam.png}
 
+
+\section {Publication}
+
+\begin{itemize}
+    \item A. Sanaee, F. Shahinfar, B. E. Stephens, G. Antichi, ``Backdraft: a Lossless Virtual Switch that
+Prevents the Slow Receiver Problem'', in NSDI 2022.
+
+    \item F. Shahinfar, S. Miano, A. Sanaee, G. Siracusano, R. Bifulco, G. Antichi,
+``The case for network functions decomposition'', in CoNext 2021.
+\end{itemize}
+
+\section{Teacher Assistant}
+% IUST
+\noindent \textbf{Iran University of Science and Technology} \par
+September 2017 – Nov 2020
+{
+    \renewcommand\labelitemi{}
+\begin{itemize}
+    \item {\textbf{Operating Systems}  \null\hfill Fall-2020 \\ Dr. Mohsen Sharifi}
+    \item {\textbf{Database design} \null\hfill Spring-2019 \\ Dr. Eisa Zarepour }
+    \item {\textbf{Introduction to programming in Java} \null\hfill Spring-2019 \\
+        Dr. Mohammad Taher Pilevar}
+    \item {\textbf{Introduction to programming in python} \null\hfill Fall-2017 and Spring-2018 \\
+ Dr. Adel Rahmani }
+\end{itemize}
+}
+
+% Khatam
+{
+\renewcommand\labelitemi{}
+\noindent \textbf{Khatam University} \par
+July 2019 - September 2019
+\begin{itemize}
+    \item {\textbf{Python Programming Crash Course}  \null\hfill Summer-2019 \\
+        Dr. Mohammad Taher Pilevar}
+\end{itemize}
+}
+
+
+\section{Frameworks/Softwares}
+\subsection{NFV \& End Host Networking}
+\begin{itemize}
+    \item DPDK application programming
+    \item XDP \& AF\_XDP
+    \item BESS: Berkeley Extensible Software Switch
+    \item TAS: TCP Accelartion Service
+\end{itemize}
+
+
+% \subsection{Linux Programming:}
+% \begin{itemize}
+%     \item Linux Kernel Memory Subsystem
+%     \item Developing Kernel Modules
+% \end{itemize}
+
+\subsection{Programming Languages:}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \begin{multicols}{2}
+        \item {Python}
+        \item {C/C++}
+        \item {Javascript}
+        \item {Bash Script}
+        % \item {C\#}
+        % \item {Java}
+        % \item {SQL}
+    \end{multicols}
+\end{itemize}
+
+% \subsection{Frameworks:}
+%     \emph{React Native},
+%     \emph{Flask},
+%     \emph{Numpy and Matplotlib}
+
+% \subsection{Softwares:}
+% \begin{itemize}
+%     \setlength\itemsep{0em}
+%     \begin{multicols}{2}
+%     \item{Docker}
+%     \item{Git}
+%     \item{PostgreSQL}
+%     \item{MongoDB}
+%     \item{Redis \& Memcached}
+%     \item{Unity3d}
+%     \item{Vim}
+%     \item \LaTeX
+%     \end{multicols}
+% \end{itemize}
 
 % \section {Work Experience}
 % % \noindent \textbf{Smart Online Monitoring Co} \par
@@ -212,82 +297,6 @@ Distributed Systems, Operating Systems, Computer Systems
 % \topic{Unity3D}
 % \topic{C\#}
 % \vspace{15pt}
-
-\section{Teacher Assistant}
-% IUST
-\noindent \textbf{Iran University of Science and Technology} \par
-September 2017 – Nov 2020
-{
-    \renewcommand\labelitemi{}
-\begin{itemize}
-    \item {\textbf{Operating Systems}  \null\hfill Fall-2020 \\ Dr. Mohsen Sharifi}
-    \item {\textbf{Database design} \null\hfill Spring-2019 \\ Dr. Eisa Zarepour }
-    \item {\textbf{Introduction to programming in Java} \null\hfill Spring-2019 \\
-        Dr. Mohammad Taher Pilevar}
-    \item {\textbf{Introduction to programming in python} \null\hfill Fall-2017 and Spring-2018 \\
- Dr. Adel Rahmani }
-\end{itemize}
-}
-
-% Khatam
-{
-\renewcommand\labelitemi{}
-\noindent \textbf{Khatam University} \par
-July 2019 - September 2019
-\begin{itemize}
-    \item {\textbf{Python Programming Crash Course}  \null\hfill Summer-2019 \\
-        Dr. Mohammad Taher Pilevar}
-\end{itemize}
-}
-
-
-\section{Skills}
-\subsection{NFV \& Kernel Bypass Networking}
-\begin{itemize}
-    \item DPDK application programming
-    \item BESS: Berkeley Extensible Software Switch (SoftNic)
-    \item TAS: TCP Accelartion Service
-\end{itemize}
-
-
-\subsection{Linux Programming:}
-\begin{itemize}
-    \item Linux Kernel Memory Subsystem
-    \item Developing Kernel Modules
-\end{itemize}
-
-\subsection{Programming Languages:}
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \begin{multicols}{2}
-        \item {Python}
-        \item {C/C++}
-        \item {Javascript}
-        % \item {C\#}
-        % \item {Java}
-        \item {SQL}
-    \end{multicols}
-\end{itemize}
-
-% \subsection{Frameworks:}
-%     \emph{React Native},
-%     \emph{Flask},
-%     \emph{Numpy and Matplotlib}
-
-\subsection{Softwares:}
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \begin{multicols}{2}
-    \item{Docker}
-    \item{Git}
-    \item{PostgreSQL}
-    \item{MongoDB}
-    \item{Redis \& Memcached}
-    \item{Unity3d}
-    \item{Vim}
-    \item \LaTeX
-    \end{multicols}
-\end{itemize}
 
 % \section{Projects}
 % \begin{multicols}{2}
