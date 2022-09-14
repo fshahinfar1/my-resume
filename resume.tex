@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 
 \usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
 \usepackage{titling}
 \usepackage[margin=1in,headheight=0pt,headsep=0pt]{geometry}
 \usepackage{multicol}
@@ -10,6 +11,8 @@
 \usepackage{makecell}
 \usepackage{xcolor}
 \usepackage{titlesec}
+\usepackage{pifont} % bullet points for itemize
+\usepackage{enumitem} % packed itemize
 
 
 \definecolor{mycolor}{rgb}{0.122, 0.435, 0.698}% Rule colour
@@ -62,98 +65,165 @@ bottom=6pt}
 
 % define function
 % arguments: level, place, graduation, image
-\newcommand{\eduWithDetail}[5] {
-    \begin{table}[h!]
-        \begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
-            \textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
-            #3 &  & \\
-            \multicolumn{3}{l}{#5}
-        \end{tabular*}
-    \end{table}
-}
+\newcommand*{\eduWithDetail}[5]
+{\begin{table}[h!]
+	\begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
+		\textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
+		#3 &  & \\
+		\multicolumn{3}{l}{#5}
+	\end{tabular*}
+\end{table}}
 
-\newcommand{\eduSmall}[5] {
-    \begin{table}[h!]
-        \begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
-            \textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
-            #3 &  & \\
-            \multicolumn{3}{l}{#5}
-        \end{tabular*}
-    \end{table}
-    }
+\newcommand*{\eduSmall}[5]
+{\begin{table}[h!]
+	\begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
+		\textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
+		#3 &  & \\
+		\multicolumn{3}{l}{#5}
+	\end{tabular*}
+\end{table}}
 
-\newcommand{\multilineCell}[1]{
-    \begin{tabular}[c]{@{}l@{}} #1 \end{tabular}
-}
+\newcommand*{\multilineCell}[1]
+{\begin{tabular}[c]{@{}l@{}} #1
+\end{tabular}}
 
+% 1: Name 2: Date 3: Lecturer 4: Level
+\newcommand*{\taRecord}[4]{\textbf{#1}\quad (#3) \\ #2 \quad  #4}
 
 
 \begin{document}
-
 % Title and Header section
-{
-    % Image
-    \begin{minipage}[t]{100px}
-        % add a row so that contacts minipage is alligned with
-        % this line, but remove the space added for the line
-        \strut\vspace*{-\baselineskip}\newline
-        \includegraphics[width=80px]{images/farbod.png} \\
-    \end{minipage}
-    % Name
-    % \nameTitleBox{
-    \begin{minipage}[t]{3.5cm}
-        \vspace{8mm}
-        \noindent
-        \huge\bfseries
-        Farbod\\
-        Shahinfar
-        % \vspace{0.0cm}
-    \end{minipage}
-    % }
-    \hfill\null
-    \begin{minipage}[t]{6cm}
-        \vspace{6mm}
-        \input{./subsections/contacts.tex}
-    \end{minipage}
-}
+% {% Image
+%     \begin{minipage}[t]{100px}
+%         % add a row so that contacts minipage is alligned with
+%         % this line, but remove the space added for the line
+%         \strut\vspace*{-\baselineskip}\newline
+%         \includegraphics[width=80px]{images/farbod.png} \\
+%     \end{minipage}
+%     Name
+%     \nameTitleBox{
+%     \begin{minipage}[t]{3.5cm}
+%         \vspace{8mm}
+%         \noindent
+%         \huge\bfseries
+%         Farbod\\
+%         Shahinfar
+%         % \vspace{0.0cm}
+%     \end{minipage}
+%     }
+%     \hfill\null
+%     \begin{minipage}[t]{6cm}
+%         \vspace{6mm}
+%         \input{./subsections/contacts.tex}
+%     \end{minipage}
+% }
+{\noindent \huge\bfseries Farbod Shahinfar}
 \vspace{-1cm}
-
 \section{}
-Studying Master of Sc. in computer engineering at Sharif university of technology.
-
-\vspace{0.5cm}
-\noindent\textbf{Research Interests:} \\
-\indent  Performance of Programable Networks and Computer Systems
+\input{./subsections/contacts.tex}
+\noindent{Research Interests:} Data Center Networking, Programmable Networks, Performance Evaluation
 
 \section{Education}
-
-\eduWithDetail{MSc. Computer Software Engineering}{Sharif University of Technology}{Graduating September 2022}{images/sharif.png}{
-    \multilineCell {
-        \hspace{5mm} \textbf{Project}:
+\vspace{-0.5cm}
+\eduWithDetail{MSc. Computer Software Engineering}
+{Sharif University of Technology}
+{Graduating September 2022}
+{images/sharif.png}
+{\multilineCell
+	{\hspace{5mm} \textbf{Project}:
         Optimizing Load Balancing for Serverless Computing Platforms \\
         \hspace{10mm} using Modeling Approaches \\
-        \hspace{5mm} \textbf{Supervisor}: Dr. Ali Movaghar
-    }
+        \hspace{5mm} \textbf{Supervisor}: Dr. Ali Movaghar}
 }
 \vspace{-5mm}
 
-\eduWithDetail{BSc. Computer Engineering}{Iran University of Science and Technology}{Graduated September 2020}{images/iust.png}{
-    \multilineCell{
-        \hspace{5mm} \textbf{Frist Rank}, 18.62/20 GPA \\
-        \hspace{5mm} \textbf{Project}:
-        Study of MMU Cache Partitioning Efficacy for Hierarchical Page Tables \\
-        \hspace{10mm} in OS Memory Management \\
-        \hspace{5mm} \textbf{Supervisor}: Dr. Mohsen Sharifi
-    }
+\eduWithDetail{BSc. Computer Engineering}
+{Iran University of Science and Technology}
+{Graduated September 2020}
+{images/iust.png}
+{\multilineCell{\hspace{5mm} \textbf{Frist Rank}, 18.62/20 GPA \\
+	\hspace{5mm} \textbf{Project}:
+	Study of MMU Cache Partitioning Efficacy for Hierarchical Page Tables \\
+	\hspace{10mm} in OS Memory Management \\
+	\hspace{5mm} \textbf{Supervisor}: Dr. Mohsen Sharifi}
 }
 \vspace{-5mm}
 
-\eduSmall{High School Diploma}{Salam 3}{Graduated May 2015}{images/salam.png}{
-    \hspace{5mm} \textbf{GPA:} 19.84/20
+\eduSmall{High School Diploma}
+{Salam 3}
+{Graduated May 2015}
+{images/salam.png}
+{\hspace{5mm} \textbf{GPA:} 19.84/20}
+
+\section{Honors \& Awards}
+\begin{itemize}
+	\renewcommand\labelitemi{\ding{118}}
+	\item {Best poster award [CoNext'21]}
+	\item{First rank student (Summa Cum Laude) [Iran University of Science and Technology]}
+	\item{Prominent computer engineering student of the year (years 2017, 2018, and 2019) [Iran University of Science and Technology]}
+\end{itemize}
+
+\section{Teaching Assistant}
+% Sharif
+\noindent \textbf{Sharif University of Technology} \par
+{\renewcommand\labelitemi{}
+\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+	\item \taRecord{Program Development from Formal Specifications}
+		{Spring-2022}
+		{Dr. Seyed-Hassan Mirian-Hosseinabadi}
+		{Graduate course}
+	\item \taRecord{Performance Evaluation of Computer Systems}
+		{Fall-2021}
+		{Dr. Ali Movaghar}
+		{Graduate course}
+	\item \taRecord{Operating Systems Lab}
+		{July-2021}
+		{Dr. Hamid Beigy}
+		{Undergraduate course}
+\end{itemize}
+}
+
+% IUST
+\noindent \textbf{Iran University of Science and Technology} \par
+{
+    \renewcommand\labelitemi{}
+    \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+		\item \taRecord{Operating Systems}
+			{Spring-2020}
+			{Dr. Reza Entezari Maleki}
+			{Undergraduate course}
+		\item \taRecord{Operating Systems}
+			{Fall-2020}
+			{Dr. Mohsen Sharifi}
+			{Undergraduate course}
+		\item \taRecord{Database design}
+			{Spring-2019}
+			{Dr. Eisa Zarepour}
+			{Undergraduate course}
+		\item \taRecord{Introduction to programming in Java}
+			{Spring-2019}
+			{Dr. Mohammad Taher Pilevar}
+			{Undergraduate}
+		\item \taRecord{Introduction to programming in python}
+			{Fall-2017 and Spring-2018}
+			{Dr. Adel Rahmani}
+			{Undergraduate}
+    \end{itemize}
+}
+
+% Khatam
+{
+\renewcommand\labelitemi{}
+\noindent \textbf{Khatam University} \par
+\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+	\item \taRecord{Python Programming Crash Course}
+		{Summer-2019}
+		{Dr. Mohammad Taher Pilevar}
+		{Undergraduate}
+\end{itemize}
 }
 
 \section {Publication}
-
 \begin{itemize}
     \item A. Sanaee, F. Shahinfar, B. E. Stephens, G. Antichi, ``Backdraft: a Lossless Virtual Switch that
         Prevents the Slow Receiver Problem'', in NSDI 2022.
@@ -162,62 +232,17 @@ Studying Master of Sc. in computer engineering at Sharif university of technolog
         ``The case for network functions decomposition'', in CoNext 2021. \textbf{[BEST POSTER]}
 \end{itemize}
 
-\newpage
-\section{Teacher Assistant}
-% Sharif
-\noindent \textbf{Sharif University of Technology} \par
-2021-2022
-{
-    \renewcommand\labelitemi{}
-    \begin{itemize}
-        \item {\textbf{Program Development from Formal Specifications} \null\hfill
-            Spring-2022 \\ Dr. Seyed-Hassan Mirian-Hosseinabadi \\
-            Master of Science Course}
-        \item {\textbf{Performance Evaluation of Computer Systems} \null\hfill
-            Fall-2021 \\ Dr. Ali Movaghar \\ Master of Science Course}
-        \item {\textbf{Operating Systems Lab} \null\hfill July-2021 \\
-            Dr. Hamid Beigy}
-    \end{itemize}
-}
+% \section{Frameworks/Softwares}
 
-% IUST
-\noindent \textbf{Iran University of Science and Technology} \par
-September 2017 – Nov 2020
-{
-    \renewcommand\labelitemi{}
-    \begin{itemize}
-        \item {\textbf{Operating Systems}  \null\hfill Fall-2020 \\ Dr. Mohsen Sharifi}
-        \item {\textbf{Database design} \null\hfill Spring-2019 \\ Dr. Eisa Zarepour }
-        \item {\textbf{Introduction to programming in Java} \null\hfill Spring-2019 \\
-            Dr. Mohammad Taher Pilevar}
-        \item {\textbf{Introduction to programming in python} \null\hfill Fall-2017 and Spring-2018 \\
-            Dr. Adel Rahmani }
-    \end{itemize}
-}
-
-% Khatam
-{
-\renewcommand\labelitemi{}
-\noindent \textbf{Khatam University} \par
-July 2019 - September 2019
-\begin{itemize}
-    \item {\textbf{Python Programming Crash Course}  \null\hfill Summer-2019 \\
-        Dr. Mohammad Taher Pilevar}
-\end{itemize}
-}
-
-
-\section{Frameworks/Softwares}
-
-\noindent\textbf{NFV \& End Host Networking}
-\begin{itemize}
-    \begin{multicols}{2}
-        \item DPDK application programming
-        \item BESS: Berkeley Extensible Software Switch
-        \item XDP \& AF\_XDP
-        \item TAS: TCP Accelartion Service
-    \end{multicols}
-\end{itemize}
+% \noindent\textbf{NFV \& End Host Networking}
+% \begin{itemize}
+%     \begin{multicols}{2}
+%         \item DPDK application programming
+%         \item BESS: Berkeley Extensible Software Switch
+%         \item XDP \& AF\_XDP
+%         \item TAS: TCP Accelartion Service
+%     \end{multicols}
+% \end{itemize}
 
 % \subsection{Linux Programming:}
 % \begin{itemize}
@@ -225,19 +250,19 @@ July 2019 - September 2019
 %     \item Developing Kernel Modules
 % \end{itemize}
 
-\noindent \textbf{Programming Languages:}
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \begin{multicols}{2}
-        \item {Python}
-        \item {C/C++}
-        \item {Javascript}
-        \item {Bash Script}
-        % \item {C\#}
-        % \item {Java}
-        % \item {SQL}
-    \end{multicols}
-\end{itemize}
+% \noindent \textbf{Programming Languages:}
+% \begin{itemize}
+%     \setlength\itemsep{0em}
+%     \begin{multicols}{2}
+%         \item {Python}
+%         \item {C/C++}
+%         \item {Javascript}
+%         \item {Bash Script}
+%         % \item {C\#}
+%         % \item {Java}
+%         % \item {SQL}
+%     \end{multicols}
+% \end{itemize}
 
 % \subsection{Frameworks:}
 %     \emph{React Native},
@@ -259,56 +284,56 @@ July 2019 - September 2019
 %     \end{multicols}
 % \end{itemize}
 
-\section {Work Experience}
-\noindent \textbf{Smart Online Monitoring Co} \par
-Mobile Application Developer \par
-January 2020 – April 2021 \par
-\begin{itemize}
-    \item Develop android application with React Native framework
-    \item Use BLE (bluetooth low energy) communication protocl
-\end{itemize}
-\topic{React Native}
-\topic{Javascript}
-\topic{BLE}
-\vspace{15pt}
+% \section {Work Experience}
+% \noindent \textbf{Smart Online Monitoring Co} \par
+% Mobile Application Developer \par
+% January 2020 – April 2021 \par
+% \begin{itemize}
+%     \item Develop android application with React Native framework
+%     \item Use BLE (bluetooth low energy) communication protocl
+% \end{itemize}
+% \topic{React Native}
+% \topic{Javascript}
+% \topic{BLE}
+% \vspace{15pt}
 
-\noindent \textbf{Cognia} (DigikalaNEXT Summer Camp) \par
-Backend Developer \par
-July 2019 – March 2020 \par
-\begin{itemize}
-    \item Develop data gathering and data processing service
-    \item Deploy service with containerization
-\end{itemize}
-\topic{Python}
-\topic{Flask}
-\topic{PostgreSQL}
-\topic{Docker \& Docker Compose}
-\topic{Locust}
-\vspace{15pt}
+% \noindent \textbf{Cognia} (DigikalaNEXT Summer Camp) \par
+% Backend Developer \par
+% July 2019 – March 2020 \par
+% \begin{itemize}
+%     \item Develop data gathering and data processing service
+%     \item Deploy service with containerization
+% \end{itemize}
+% \topic{Python}
+% \topic{Flask}
+% \topic{PostgreSQL}
+% \topic{Docker \& Docker Compose}
+% \topic{Locust}
+% \vspace{15pt}
 
-\noindent \textbf{Loop Game Studio} \par
-Backend Developer (A project contract) \par
-June 2019 – August 2019 \par
-\begin{itemize}
-    \item Develop a REST API server for the game.
-    \item Design a relational database for cutsomizable items in sale.
-\end{itemize}
-\topic{Python - Flask}
-\topic{PostgreSQL}
-\topic{Docker \& Docker Compose}
-\vspace{15pt}
+% \noindent \textbf{Loop Game Studio} \par
+% Backend Developer (A project contract) \par
+% June 2019 – August 2019 \par
+% \begin{itemize}
+%     \item Develop a REST API server for the game.
+%     \item Design a relational database for cutsomizable items in sale.
+% \end{itemize}
+% \topic{Python - Flask}
+% \topic{PostgreSQL}
+% \topic{Docker \& Docker Compose}
+% \vspace{15pt}
 
-\noindent \textbf{ElmoGame} \par
-Game developer \par
-July 2017 – January 2019 \par
-\begin{itemize}
-    \item Work with Unity3d engine
-    \item Apply software design patterns in the project
-    \item Communicate with game server using REST APIs
-\end{itemize}
-\topic{Unity3D}
-\topic{C\#}
-\vspace{15pt}
+% \noindent \textbf{ElmoGame} \par
+% Game developer \par
+% July 2017 – January 2019 \par
+% \begin{itemize}
+%     \item Work with Unity3d engine
+%     \item Apply software design patterns in the project
+%     \item Communicate with game server using REST APIs
+% \end{itemize}
+% \topic{Unity3D}
+% \topic{C\#}
+% \vspace{15pt}
 
 % \section{Projects}
 % \begin{multicols}{2}
@@ -318,8 +343,8 @@ July 2017 – January 2019 \par
 % \end{itemize}
 % \end{multicols}
 
-\section{Languages:}
-    \emph{Persian}: Native \\
-    \emph{English}: Working Profeciency
+% \section{Languages:}
+%     \emph{Persian}: Native \\
+%     \emph{English}: Working Profeciency
 
 \end{document}
