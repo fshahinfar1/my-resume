@@ -1,0 +1,93 @@
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titling}
+\usepackage[margin=1in,headheight=0pt,headsep=0pt]{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{pifont} % bullet points for itemize
+\usepackage{enumitem} % packed itemize
+
+
+\definecolor{mycolor}{rgb}{0.122, 0.435, 0.698}% Rule colour
+
+% Reduce the margin from the top of the page
+\setlength{\voffset}{-0.5in}
+\setlength{\headsep}{5pt}
+
+
+% Format some parts
+\titleformat{\section}
+{\Large\bfseries\uppercase}
+{}
+{0em}
+{}[\titlerule]
+
+\titleformat{\subsection}
+{\bfseries\Large}
+{$\bullet$}
+{0em}
+{}
+
+\titleformat{\subsubsection}
+{\bfseries}
+{}
+{0em}
+{}
+
+\newtcbox{\topic}{on line,
+colframe=mycolor,
+colback=mycolor!10!white,
+boxrule=0.5pt,
+arc=4pt,
+boxsep=0pt,
+left=6pt,
+right=6pt,
+top=6pt,
+bottom=6pt}
+
+\newtcbox{\nameTitleBox}{on line,
+colframe=gray,
+colback=white,
+boxrule=1pt,
+arc=2pt,
+boxsep=0pt,
+left=6pt,
+right=6pt,
+top=6pt,
+bottom=6pt}
+
+% define function
+% arguments: level, place, graduation, image
+\newcommand*{\eduWithDetail}[5]
+{
+\vspace{-5mm}
+\begin{table}[h!]
+	\begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
+		\textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
+		#3 &  & \\
+		\multicolumn{3}{l}{#5}
+	\end{tabular*}
+\end{table}}
+
+\newcommand*{\eduSmall}[5]
+{\begin{table}[h!]
+  \vspace{-5mm}
+	\begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
+		\textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
+		#3 &  & \\
+		% \multicolumn{3}{l}{#5}
+	\end{tabular*}
+\end{table}}
+
+\newcommand*{\multilineCell}[1]
+{\begin{tabular}[c]{@{}l@{}} #1
+\end{tabular}}
+
+% 1: Name 2: Date 3: Lecturer 4: Level
+\newcommand*{\taRecord}[4]{\textbf{#1}\quad (#3) \\ #2 \quad  #4}
+
