@@ -75,14 +75,17 @@ bottom=6pt}
 \end{table}}
 
 \newcommand*{\eduSmall}[5]
-{\begin{table}[h!]
-  \vspace{-5mm}
+{ % \footnotesize
+  % \begin{table}[h!]
+  \vspace{-8mm}
+  \flushleft
 	\begin{tabular*}{\textwidth}{ll@{\extracolsep{\fill}}r}
 		\textbf{#1} &  #2 & \\ % \multirow{2}{*}{\includegraphics[width=40px]{#4}} \\
 		#3 &  & \\
 		% \multicolumn{3}{l}{#5}
-	\end{tabular*}
-\end{table}}
+	\end{tabular*} \hfill
+% \end{table}
+}
 
 \newcommand*{\multilineCell}[1]
 {\begin{tabular}[c]{@{}l@{}} #1
